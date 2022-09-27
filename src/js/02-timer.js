@@ -1,3 +1,5 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
@@ -41,6 +43,10 @@ const options = {
     if (selectDate.selectedDates[0] > date) {
       start.disabled = false;
     } else {
+      Notiflix.Notify.failure(
+        'Вибраний час вже в минулому. Введіть дату з майбутнього!',
+        { position: 'center-center' }
+      );
       start.disabled = true;
       window.alert('Please choose a date in the future');
     }
